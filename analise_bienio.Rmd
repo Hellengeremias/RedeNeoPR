@@ -1,0 +1,1353 @@
+---
+title: "Atenção Hospitalar no período Neonatal"
+author: "Hellen Geremias dos Santos"
+date: "15/02/2023"
+output: html_document
+---
+
+# pacotes
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(hans)
+library(ggpubr)
+library(directlabels)
+```
+
+# dados
+
+- SIHSUS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+sihsus <- data.table::fread("ESTADOS_FINAL.csv")
+sihsus$periodo <- as.numeric(sihsus$periodo)
+```
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+sihsus_r <- sihsus %>% 
+  dplyr::select(-c(r, NASC, dt_inter)) %>% 
+  dplyr::filter(periodo != 2007)
+names(sihsus_r)[1] <- "CODMUNRES"
+
+sihsus_r$bienio <- ifelse(sihsus_r$periodo == 2008 |
+                          sihsus_r$periodo == 2009, "2008-2009",
+                          ifelse(sihsus_r$periodo == 2010 |
+                                 sihsus_r$periodo == 2011, "2010-2011",
+                                 ifelse(sihsus_r$periodo == 2012 |
+                                        sihsus_r$periodo == 2013, "2012-2013",
+                                        ifelse(sihsus_r$periodo == 2014 |
+                                               sihsus_r$periodo == 2015, "2014-2015",
+                                               ifelse(sihsus_r$periodo == 2016 |
+                                                      sihsus_r$periodo == 2017, 
+                                                      "2016-2017", "2018-2019")))))
+```
+
+- IBGE
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+ibge <- data.table::fread("Daniela/data/cod_ibge_completo.xlsx - Sheet1.csv", 
+                          encoding = "UTF-8")
+
+ibge_r <- dplyr::select(ibge, c("city_ibge_code","city","RS","M","CODMUNRES"))
+```
+
+# juntar bancos
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+# Juntar SIHSUS e dados do IBGE
+dados_final.1 <- dplyr::left_join(sihsus_r, ibge_r, by = "CODMUNRES")
+
+# Definir características de local de residência - origem (município, regional de saúde e macrorregião)
+dados_final.1 <- dplyr::rename(dados_final.1, "mun_res" = "city")
+dados_final.1 <- dplyr::rename(dados_final.1, "RS_res" = "RS")
+dados_final.1 <- dplyr::rename(dados_final.1, "M_res" = "M")
+
+# Definir características de local de ocorrência - destino (município, regional de saúde e macrorregião)
+ibge_r <- dplyr::rename(ibge_r, "MUNIC_MOV" = "CODMUNRES")
+
+dados_final.2 <- dplyr::left_join(dados_final.1, dplyr::select(ibge_r, -city_ibge_code), by = "MUNIC_MOV")
+dados_final.2 <- dplyr::rename(dados_final.2, "mun_mov" = "city")
+dados_final.2 <- dplyr::rename(dados_final.2, "RS_mov" = "RS")
+dados_final.2 <- dplyr::rename(dados_final.2, "M_mov" = "M")
+
+ibge_r <- dplyr::rename(ibge_r, "CODMUNRES" = "MUNIC_MOV")
+```
+
+# distância origem-destino
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_final.2$dist <- hans::haversine(dados_final.2$res_LATITUDE, dados_final.2$res_LONGITUDE, 
+                                dados_final.2$int_LATITUDE, dados_final.2$int_LONGITUDE)
+```
+
+# matriz de deslocamentos
+- Leste
+```{r, message=FALSE, warning=FALSE, results='hold'}
+# 2008-2009
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "leste"], #linha
+                 dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "leste"])) #coluna
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "leste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "leste"]),2), 4)*100
+
+
+# 2018-2019
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "leste"], 
+                 dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "leste"]))
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "leste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "leste"]),2), 4)*100
+```
+
+- Oeste
+```{r, message=FALSE, warning=FALSE, results='hold'}
+# 2008-2009
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "oeste"], #linha
+                 dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "oeste"])) #coluna
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "oeste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "oeste"]),2), 4)*100
+
+# 2018-2019
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "oeste"], 
+                 dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "oeste"]))
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "oeste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "oeste"]),2), 4)*100
+```
+
+- Noroeste
+```{r, message=FALSE, warning=FALSE, results='hold'}
+# 2008-2009
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "noroeste"], #linha
+                 dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "noroeste"])) #coluna
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "noroeste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "noroeste"]),2), 4)*100
+
+
+# 2018-2019
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "noroeste"], 
+                 dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "noroeste"]))
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "noroeste"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "noroeste"]),2), 4)*100
+```
+
+- Norte
+```{r, message=FALSE, warning=FALSE, results='hold'}
+# 2008-2009
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "norte"], #linha
+                 dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                           dados_final.2$M_res == "norte"])) #coluna
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "norte"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2008-2009" &
+                                                 dados_final.2$M_res == "norte"]),2), 4)*100
+
+
+# 2018-2019
+addmargins(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "norte"], 
+                 dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                           dados_final.2$M_res == "norte"]))
+
+round(prop.table(table(dados_final.2$RS_mov[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "norte"], 
+                       dados_final.2$RS_res[dados_final.2$bienio == "2018-2019" &
+                                                 dados_final.2$M_res == "norte"]),2), 4)*100
+```
+
+- VP % internação mesma RS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+# % internação mesma RS
+p.1 <- c(27.16,99.63,15.33,71.78,75.11,72.43,29.61,93.56,78.09,74.84,76.92,53.64,76.97,92.68,35.64,74.06,
+         85.85,54.70,96.58,58.64,18.93,88.36)
+
+p.2 <- c(54.06,99.72, 25.33, 87.31,71.63,82.24,17.21,90.75,86.23,87.35,94.54,69.34,95.51,86.89,62.07,81.30,97.31,
+82.05,98.50,86.83,86.85,81.74)
+
+VP.p1.p2 <- round(((p.2-p.1)/p.1)*100,2)
+names(VP.p1.p2)[1:22] <- c("1","2","3","4","5","6","21",
+                           "7","8","9","10","20",
+                           "11","12","13","14","15",
+                           "16","17","18","19","22")
+VP.p1.p2
+```
+
+# deslocamentos distintos: fluxo de saída e distância ponderada pelo fluxo
+
+- frequência de descocamentos dentro/fora do PR
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+round(addmargins(prop.table(table(dados_final.2$bienio, dados_final.2$UF),1)*100),1)
+
+table(dados_final.2$bienio[dados_final.2$UF == "PR"])
+```
+
+- nº de deslocamentos distintos e distância
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+n.desl <-dados_final.2 %>%
+  dplyr::mutate(n = rep(1, nrow(dados_final.2))) %>% 
+  dplyr::filter(UF == "PR") %>% 
+  dplyr::group_by(M_res, RS_res, mun_res, city_ibge_code, CODMUNRES, MUNIC_MOV) %>%
+  dplyr::summarise(n.ocor = sum(n), distancia = round(unique(dist),2))
+
+n.desl %>% 
+  group_by() %>% 
+   dplyr::summarise(media_ponderada = sum((n.ocor*distancia))/sum(n.ocor))
+```
+
+- seleção de deslocamentos dentro do Estado do PR, n. de deslocamentos distintos e sua frequência
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count <- dados_final.2 %>%
+  dplyr::mutate(n = rep(1, nrow(dados_final.2))) %>% 
+  dplyr::filter(UF == "PR") %>% 
+  dplyr::group_by(bienio, M_res, RS_res, mun_res, city_ibge_code, CODMUNRES, MUNIC_MOV) %>%
+  dplyr::summarise(n.ocor = sum(n), 
+                   distancia = round(unique(dist),2))
+dados_PR_count <- as.data.frame(dados_PR_count)
+```
+
+- fluxo de saída e distância ponderada pelo fluxo por biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count %>% 
+  dplyr::group_by(bienio) %>% 
+  dplyr::summarise(n.ocor_r = sum(n.ocor), media_ponderada = sum((n.ocor*distancia))/sum(n.ocor))
+
+table(dados_PR_count$bienio)
+```
+
+- fluxo de saída e distância ponderada pelo fluxo por biênio e macrorregião
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count %>% 
+  dplyr::group_by(bienio, M_res) %>% 
+  dplyr::summarise(n.ocor_r = sum(n.ocor), 
+            media_ponderada = sum((n.ocor*distancia))/sum(n.ocor)) %>% 
+  dplyr::arrange(M_res, bienio, media_ponderada)
+```
+
+- fluxo de saída e distância ponderada pelo fluxo por biênio, macrorregião e RS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+a <- dados_PR_count %>% 
+  dplyr::group_by(bienio, RS_res, M_res) %>% 
+  dplyr::summarise(n.ocor_r = sum(n.ocor), 
+            media_ponderada = sum((n.ocor*distancia))/sum(n.ocor)) %>% 
+  dplyr::arrange(M_res, RS_res, bienio)
+```
+
+# município origem: distância média ponderada pelo fluxo origem-destinos
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r <- dados_PR_count %>%
+  dplyr::mutate(n_m_mov = rep(1, nrow(dados_PR_count))) %>% 
+  dplyr::group_by(bienio, M_res, RS_res, city_ibge_code, CODMUNRES, mun_res) %>%
+  dplyr::summarise(n.ocor_r = sum(n.ocor), 
+                   media_ponderada = sum((n.ocor*distancia))/sum(n.ocor),
+                   s_mun_mov = sum(n_m_mov)) %>% 
+  dplyr::arrange(bienio, M_res, RS_res)
+
+dados_PR_count.r <- dplyr::left_join(dados_PR_count.r, 
+                              dplyr::select(ibge_r, c(city, CODMUNRES)), 
+                              by = "CODMUNRES")
+
+dados_PR_count.r$chave <- paste(dados_PR_count.r$CODMUNRES, dados_PR_count.r$bienio, sep = "_")
+dados_PR_count.r <- as.data.frame(dados_PR_count.r)
+```
+
+# internações ocorridas no município de residência
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+int_mesmo_mun <- readxl::read_xlsx("internacoes_mesmo_mun_2023_2.xlsx")
+int_mesmo_mun$periodo <- as.numeric(lubridate::year(as.Date(int_mesmo_mun$dt_int_ymd, format = "%d/%m/%Y")))
+
+int_mesmo_mun$bienio <- ifelse(int_mesmo_mun$periodo == 2008 |
+                               int_mesmo_mun$periodo == 2009, "2008-2009",
+                               ifelse(int_mesmo_mun$periodo == 2010 |
+                                      int_mesmo_mun$periodo == 2011, "2010-2011",
+                                      ifelse(int_mesmo_mun$periodo == 2012 |
+                                             int_mesmo_mun$periodo == 2013, "2012-2013",
+                                             ifelse(int_mesmo_mun$periodo == 2014 |
+                                                    int_mesmo_mun$periodo == 2015, "2014-2015",
+                                                    ifelse(int_mesmo_mun$periodo == 2016 |
+                                                           int_mesmo_mun$periodo == 2017, 
+                                                           "2016-2017", "2018-2019")))))
+```
+
+- soma de internações ocorridas no município de residência por município e biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+data_r3.2 <- int_mesmo_mun %>% 
+  dplyr::select(MUNIC_RES, bienio) %>%
+  dplyr::mutate(n = rep(1, nrow(int_mesmo_mun))) %>% 
+  dplyr::group_by(MUNIC_RES, bienio) %>%
+  dplyr::summarise(n_sum = sum(n))
+
+data_r3.2$chave <- paste(data_r3.2$MUNIC_RES, data_r3.2$bienio, sep = "_")
+data_r3.2 <- as.data.frame(data_r3.2)
+```
+
+# banco de dados de Nascidos Vivos (NV) por município de residência e ano
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+NV <- read.csv2("NV2023.csv", header = TRUE, sep = ";")
+NV$municipio <- as.character(NV$municipio)
+NV$CODMUNRES <- substr(NV$municipio, start = 1, stop = 6)
+
+NV_r <- dplyr::select(NV, -municipio)
+NV_r$CODMUNRES <- as.numeric(NV_r$CODMUNRES)
+```
+
+- empilhar dados de anos distintos
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+NV_r.2 <- NV_r %>% 
+  tidyr::gather(key = CODMUNRES)
+names(NV_r.2)[1:2] <- c("periodo", "n.NV")
+NV_r.2$periodo <- substr(as.character(NV_r.2$periodo), start = 2, stop = 5)
+NV_r.2$CODMUNRES <- c(rep(NV_r$CODMUNRES, 12))
+NV_r.2$CODMUNRES <- as.numeric(NV_r.2$CODMUNRES)
+NV_r.2 <- dplyr::left_join(NV_r.2, dplyr::select(ibge_r, c(CODMUNRES, RS, M)), by = "CODMUNRES")
+NV_r.2$n.NV <- as.numeric(NV_r.2$n.NV)
+```
+
+- agrupar anos em biênios, preservando info. de município de residência (RS e macrorregião)
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+NV_r.2$bienio <- ifelse(NV_r.2$periodo == 2008 | NV_r.2$periodo == 2009, "2008-2009",
+                        ifelse(NV_r.2$periodo == 2010 | 
+                               NV_r.2$periodo == 2011, "2010-2011",
+                               ifelse(NV_r.2$periodo == 2012 |
+                                      NV_r.2$periodo == 2013, "2012-2013",
+                                      ifelse(NV_r.2$periodo == 2014 |
+                                             NV_r.2$periodo == 2015, "2014-2015",
+                                             ifelse(NV_r.2$periodo == 2016 |
+                                                    NV_r.2$periodo == 2017, "2016-2017",
+                                                    "2018-2019")))))
+NV_r.3 <- NV_r.2 %>% 
+  dplyr::group_by(M, RS, CODMUNRES, bienio) %>% 
+  dplyr::summarise(n.NV = sum(n.NV))
+
+NV_r.3$chave <- paste(NV_r.3$CODMUNRES, NV_r.3$bienio, sep = "_")
+NV_r.3 <- as.data.frame(NV_r.3)
+```
+
+- n.internações ocorridas fora do município de residência a cada 1.000 NV segundo biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r <- dplyr::left_join(dados_PR_count.r, 
+                              dplyr::select(NV_r.3, chave, n.NV), 
+                              by = "chave")
+dados_PR_count.r %>% 
+  dplyr::group_by(bienio) %>% 
+  dplyr::summarise(n.NV2 = sum(n.NV),
+            n.ocor_r2 = sum(n.ocor_r),
+            taxa.fluxo = (n.ocor_r2/n.NV2)*1000)
+```
+
+# frequência relativa de internações ocorridas fora do município de residência por biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r <- dplyr::left_join(dados_PR_count.r, 
+                                     dplyr::select(data_r3.2, chave, n_sum), 
+                                     by = "chave")
+
+dados_PR_count.r$n_sum <- as.numeric(ifelse(is.na(dados_PR_count.r$n_sum), 0, dados_PR_count.r$n_sum))
+dados_PR_count.r$n.total <- dados_PR_count.r$n.ocor_r + dados_PR_count.r$n_sum
+
+dados_PR_count.r <- dados_PR_count.r %>% 
+  arrange(bienio, M_res, RS_res, CODMUNRES)
+dados_PR_count.r <- as.data.frame(dados_PR_count.r)
+
+dados_PR_count.r %>% 
+  dplyr::group_by(bienio) %>% 
+  dplyr::summarise(n.ocor_r2 = sum(n.ocor_r),
+            n.total2 = sum(n.total),
+            prop_ocorr = (n.ocor_r2/n.total2)*100)
+```
+
+- frequência relativa de internações ocorridas fora do município de residência por biênio, macrorregião e RS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r %>% 
+  dplyr::group_by(bienio, RS_res, M_res) %>% 
+  dplyr::summarise(n.ocor_r2 = sum(n.ocor_r),
+            n.total2 = sum(n.total),
+            prop_ocorr = (n.ocor_r2/n.total2)*100) %>% 
+  dplyr::arrange(M_res, RS_res, bienio)
+```
+
+# Regional de Saúde (RS) origem: média das distâncias obtidas para o município origem ponderada pelo número de internações do município origem
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r.m.RS <- dados_PR_count.r %>% 
+  dplyr::mutate(n = rep(1, nrow(dados_PR_count.r))) %>% 
+  dplyr::group_by(M_res, RS_res, bienio) %>% 
+  dplyr::summarise(fluxo_saida = sum(n.ocor_r),
+            media_aresta_saida = sum(n.ocor_r*media_ponderada)/sum(n.ocor_r),
+            n.desl.medio = sum(s_mun_mov)/sum(n),
+            n.NV2 = sum(n.NV),
+            n.sum2 = sum(n_sum),
+            n.ocor_r2 = sum(n.ocor_r),
+            taxa.fluxo = (n.ocor_r2/n.NV2)*1000,
+            n.ocor_r2 = sum(n.ocor_r),
+            n.total2 = sum(n.total),
+            prop_ocorr = (n.ocor_r2/n.total2)*100
+            ) %>% 
+  arrange(M_res, RS_res,bienio)
+  
+dados_PR_count.r.m.RS$RS <- factor(dados_PR_count.r.m.RS$RS_res,
+                                 levels = c("1",  "2",  "3", "4",  "5",  "6", "21",
+                                  "7",  "8",  "9",  "10", "20",
+                                  "11", "12", "13", "14", "15",
+                                  "16", "17", "18", "19", "22"))
+```
+
+# variação percentual distância e % internação
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r.m.RS.2008_2009 <- dados_PR_count.r.m.RS %>% 
+  filter(bienio == "2008-2009")
+
+dados_PR_count.r.m.RS.2018_2019 <- dados_PR_count.r.m.RS %>% 
+  filter(bienio == "2018-2019")
+
+# distância
+VP.dist <- round(((dados_PR_count.r.m.RS.2018_2019$media_aresta_saida - dados_PR_count.r.m.RS.2008_2009$media_aresta_saida)/dados_PR_count.r.m.RS.2008_2009$media_aresta_saida)*100, 2)
+
+names(VP.dist)[1:length(VP.dist)] <- dados_PR_count.r.m.RS.2008_2009$RS_res
+VP.dist
+
+# % internação
+VP.prop.int <- round(((dados_PR_count.r.m.RS.2018_2019$prop_ocorr - dados_PR_count.r.m.RS.2008_2009$prop_ocorr)/dados_PR_count.r.m.RS.2008_2009$prop_ocorr)*100, 2)
+
+names(VP.prop.int)[1:length(VP.prop.int)] <- dados_PR_count.r.m.RS.2008_2009$RS_res
+VP.prop.int
+```
+
+# grau e fluxo de entrada
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.entrada <- dados_PR_count %>% 
+  dplyr::mutate(n2 = rep(1, nrow(dados_PR_count))) %>% 
+  dplyr::group_by(bienio, MUNIC_MOV) %>% 
+  dplyr::summarise(n.ocor.r = sum(n.ocor), n.mun = sum(n2))
+names(ibge_r)[5] <- "MUNIC_MOV"
+
+dados_PR_count.entrada <- dplyr::left_join(dados_PR_count.entrada, 
+                                    dplyr::select(ibge_r, c(city, RS, M, MUNIC_MOV)), 
+                                    by = "MUNIC_MOV")
+
+dados_PR_count.entrada$chave <- paste(dados_PR_count.entrada$MUNIC_MOV, 
+                                      dados_PR_count.entrada$bienio, sep = "_")
+
+dados_PR_count.entrada <- dplyr::left_join(dados_PR_count.entrada, 
+                                    dplyr::select(data_r3.2, c(n_sum, chave)), 
+                                    by = "chave")
+```
+
+- seleção de municípios-sede das RS e de municípios-não sede que tiveram protagonismo como destinos frequentes
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+sede <- c("paranaguá", "curitiba", 
+  "ponta grossa", "irati", "guarapuava", "união da vitória", "telêmaco borba",
+  "pato branco", "francisco beltrão", "foz do iguaçu", "cascavel", "toledo",
+  "campo mourão", "umuarama", "cianorte", "paranavaí", "maringá", 
+  "apucarana", "londrina", "cornélio procópio", "jacarezinho","ivaiporã")
+
+
+destinos <- c("paranaguá", "curitiba", 
+  "ponta grossa", "irati", "guarapuava", "união da vitória", "telêmaco borba",
+  "pato branco", "francisco beltrão", "foz do iguaçu", "cascavel", "toledo",
+  "campo mourão", "umuarama", "cianorte", "paranavaí", "maringá", 
+  "apucarana", "londrina", "cornélio procópio", "jacarezinho","ivaiporã",
+  "campo largo", "sarandi", "santo antônio da platina", "campina grande do sul")
+
+dados_PR_count.entrada$sede_RS <- ifelse(dados_PR_count.entrada$city %in% sede, "sim", "nao")
+dados_PR_count.entrada$destino <- ifelse(dados_PR_count.entrada$city %in% destinos, "sim", "nao")
+```
+
+- organização de dados para gráfico de tendência do grau e fluxo de entrada
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados.entrada.r <- dados_PR_count.entrada %>% filter(destino == "sim")
+dados.entrada.r$G <- rep(1, nrow(dados.entrada.r))
+dados.entrada.r$G <- as.factor(dados.entrada.r$G)
+
+destino2 <- c("campo largo", "curitiba", 
+              "londrina", "santo antônio da platina", "sarandi", "campina grande do sul",
+              "maringá", "campo mourão",
+              "cascavel", "francisco beltrão")
+
+dados.entrada.r$Cidade <- ifelse(dados.entrada.r$city %in% destino2, 
+                                 dados.entrada.r$city, 
+                                 "outras-sede RS")
+
+dados.entrada.r$Cidade2 <- ifelse(dados.entrada.r$city %in% destino2, "0", "1")
+dados.entrada.r$RS2 <- ifelse(dados.entrada.r$city %in% destino2, dados.entrada.r$RS, " ")
+dados.entrada.r$RS2 <- ifelse(dados.entrada.r$sede_RS == "sim", dados.entrada.r$RS2, 
+                              paste(dados.entrada.r$RS2,"*", sep=""))
+dados.entrada.r$RS2 <- ifelse(dados.entrada.r$city == "campina grande do sul", " 2*", dados.entrada.r$RS2)
+```
+
+- tendência do fluxo de entrada (quantidade de internações ocorridas no destino de NV em outros municípios)
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+e1 <- ggplot(dados.entrada.r, aes(x=bienio, y=n.ocor.r, group = city, 
+                            color = Cidade, lty = Cidade2)) +
+geom_line(size = 0.15) +
+geom_dl(aes(label = RS2), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+scale_color_manual(values = c("brown1","tomato3", "royalblue4", "gold3", "firebrick4", 
+                          "gold4","green4", "royalblue2", "grey35", "springgreen2", "deepskyblue1")) +
+scale_y_continuous(limits = c(0,3000), breaks = c(0, 500, 1000, 1500, 2000, 2500,3000)) +
+xlab("") +
+ylab("fluxo de entrada") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+theme(legend.position = "bottom") +
+  guides(group = "none", lty = "none") + facet_wrap(~ M)
+plot(e1)
+```
+
+- tendência do grau de entrada (número de municípios que procuraram um dado destino)
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+e2 <- ggplot(dados.entrada.r, aes(x= bienio, y=n.mun, group = city, color = Cidade, lty = Cidade2)) +
+geom_line(size = 0.15) +
+geom_dl(aes(label = RS2), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+scale_color_manual(values = c("brown1","tomato3", "royalblue4", "gold3", "firebrick4", 
+                          "gold4","green4", "royalblue2", "grey35", "springgreen2", "deepskyblue1")) +
+xlab("") +
+ylab("grau de entrada") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+theme(legend.position = "bottom") +
+  guides(group = "none", lty = "none") + facet_wrap(~ M)
+plot(e2)
+```
+
+- salvar figuras de fluxo e grau de entrada
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+ggsave(file = "figura.fluxo.entrada.bienio.svg", e1,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15)
+
+ggsave(file = "figura.grau.entrada.bienio.svg", e2,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15)
+```
+
+# Medidas de variação percentual grau e fluxo de entrada
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados.entrada.2008_2009 <- dados.entrada.r %>% 
+  filter(bienio == "2008-2009")
+
+dados.entrada.2018_2019 <- dados.entrada.r %>% 
+  filter(bienio == "2018-2019")
+
+# grau de entrada
+VP_grau <- round(((dados.entrada.2018_2019$n.mun - dados.entrada.2008_2009$n.mun)/dados.entrada.2008_2009$n.mun)*100,2)
+
+names(VP_grau)[1:length(VP_grau)] <- dados_PR_count.entrada.2008_2009$city
+VP_grau
+
+# fluxo de entrada
+VP_fluxo.e <- round(((dados.entrada.2018_2019$n.ocor.r - dados.entrada.2008_2009$n.ocor.r)/dados.entrada.2008_2009$n.ocor.r)*100,2)
+
+names(VP_fluxo.e)[1:length(VP_fluxo.e)] <- dados_PR_count.entrada.2008_2009$city
+VP_fluxo.e
+```
+
+# MAPAS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+library(devtools)
+library(geobr)
+library(sf)
+library(viridis)
+library(ggspatial)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+theme_set(theme_bw())
+mapa2 <- geobr::read_health_region()
+mapa2 <- mapa2 %>%  dplyr::filter(code_state == "41")
+mapa2$code <- c("1ª", "2ª", "3ª", "4ª", "5ª", "6ª", "7ª", "8ª", "9ª",
+                "10ª", "11ª", "12ª", "13ª", "14ª", "15ª", "16ª", "17ª",
+                "18ª", "19ª", "20ª", "21ª", "22ª")
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r.m.RS.pre <- dados_PR_count.r.m.RS %>% 
+  filter(bienio == "2008-2009")
+
+dados_PR_count.r.m.RS.pre$code_health_region <- c(41001,41002,41003,41004,41005,
+                                                  41006,41021,41011,41012,41013,41014,
+                                                  41015,41016,41017,41018,41019,41022,
+                                                  41007,41008,41009,41010,41020)
+dados_PR_count.r.m.RS.pre$code_health_region <- as.character(dados_PR_count.r.m.RS.pre$code_health_region)
+
+summary(dados_PR_count.r.m.RS.pre$media_aresta_saida)
+summary(dados_PR_count.r.m.RS.pre$prop_ocorr)
+
+dados_PR_count.r.m.RS.pos <- dados_PR_count.r.m.RS %>% 
+  filter(bienio == "2018-2019")
+
+dados_PR_count.r.m.RS.pos$code_health_region <- c(41001,41002,41003,41004,41005,
+                                                  41006,41021,41011,41012,41013,41014,
+                                                  41015,41016,41017,41018,41019,41022,
+                                                  41007,41008,41009,41010,41020)
+dados_PR_count.r.m.RS.pos$code_health_region <- as.character(dados_PR_count.r.m.RS.pos$code_health_region)
+
+summary(dados_PR_count.r.m.RS.pos$media_aresta_saida)
+summary(dados_PR_count.r.m.RS.pos$prop_ocorr)
+```
+
+# biênio 2008-2009
+
+- distância média ponderada pelo fluxo de saída segundo RS
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+dados_PR_count.r.m.RS.pre$media_aresta_saida2 <- as.numeric(ifelse(dados_PR_count.r.m.RS.pre$media_aresta_saida <=35, 35,    ifelse(dados_PR_count.r.m.RS.pre$media_aresta_saida > 35 & dados_PR_count.r.m.RS.pre$media_aresta_saida <=55, 55, ifelse(dados_PR_count.r.m.RS.pre$media_aresta_saida >55 & dados_PR_count.r.m.RS.pre$media_aresta_saida <=75, 75, ifelse(dados_PR_count.r.m.RS.pre$media_aresta_saida >75 & dados_PR_count.r.m.RS.pre$media_aresta_saida <=95, 95, 105)))))
+
+dados_select_mapa <- dados_PR_count.r.m.RS.pre %>% 
+  dplyr::select(code_health_region, media_aresta_saida2)
+
+coord_pontos <- dplyr::left_join(mapa2, dados_select_mapa, by = "code_health_region") %>% 
+  st_centroid()
+
+a1 <- mapa2 %>% 
+  dplyr::left_join(dados_select_mapa, by = "code_health_region") %>% 
+  ggplot() +
+  geom_sf(aes(fill = media_aresta_saida2)) + 
+  scale_fill_gradient(
+  name = "aresta de saída (média ponderada em km)",
+  low = "white",
+  high = "grey20",
+  space = "Lab",
+  na.value = "grey50",
+  guide = "colourbar",
+  aesthetics = "fill") +
+  geom_sf_label(data = mapa2, aes(label = code), alpha = 0.85, label.size  = .75) +
+  ggtitle("A: 2008-2009") +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    height = unit(1, "cm"),
+    width = unit(1, "cm"),
+    pad_x = unit(0.1, "in"),
+    pad_y = unit(0.1, "in"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  ggspatial::annotation_scale() +
+  xlab("") +
+  ylab("")
+plot(a1)
+```
+
+- proporção de internações ocorridas fora do município de residência
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+dados_PR_count.r.m.RS.pre$prop_ocorr2 <- as.numeric(ifelse(dados_PR_count.r.m.RS.pre$prop_ocorr <=30, 30,
+              ifelse(dados_PR_count.r.m.RS.pre$prop_ocorr > 30 & dados_PR_count.r.m.RS.pre$prop_ocorr <=40, 40,
+          ifelse(dados_PR_count.r.m.RS.pre$prop_ocorr >40 & dados_PR_count.r.m.RS.pre$prop_ocorr <=50, 50,
+          ifelse(dados_PR_count.r.m.RS.pre$prop_ocorr >50 & dados_PR_count.r.m.RS.pre$prop_ocorr <=60, 60, 70)))))
+
+dados_select_mapa <- dados_PR_count.r.m.RS.pre %>% 
+  dplyr::select(code_health_region, prop_ocorr2)
+
+coord_pontos <- dplyr::left_join(mapa2, dados_select_mapa, by = "code_health_region") %>% 
+  st_centroid()
+
+a3 <- mapa2 %>% 
+  dplyr::left_join(dados_select_mapa, by = "code_health_region") %>% 
+  ggplot() +
+  geom_sf(aes(fill = prop_ocorr2)) + 
+  scale_fill_gradient(
+  name = "% internações",
+  low = "white",
+  high = "grey20",
+  space = "Lab",
+  na.value = "grey50",
+  guide = "colourbar",
+  aesthetics = "fill") +
+  geom_sf_label(data = mapa2, aes(label = code), alpha = 0.85, label.size  = .75) +
+  ggtitle("A: 2008-2009") +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    height = unit(1, "cm"),
+    width = unit(1, "cm"),
+    pad_x = unit(0.1, "in"),
+    pad_y = unit(0.1, "in"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  ggspatial::annotation_scale() +
+  xlab("") +
+  ylab("")
+
+plot(a3)
+```
+
+# biênio 2018-2019
+
+- distância média ponderada pelo fluxo de saída segundo RS
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+dados_PR_count.r.m.RS.pos$media_aresta_saida2 <- as.numeric(ifelse(dados_PR_count.r.m.RS.pos$media_aresta_saida <=35, 35,
+ifelse(dados_PR_count.r.m.RS.pos$media_aresta_saida > 35 & dados_PR_count.r.m.RS.pos$media_aresta_saida <=55, 55,
+ifelse(dados_PR_count.r.m.RS.pos$media_aresta_saida >55 & dados_PR_count.r.m.RS.pos$media_aresta_saida <=75, 75,
+ifelse(dados_PR_count.r.m.RS.pos$media_aresta_saida >75 & dados_PR_count.r.m.RS.pos$media_aresta_saida <=95, 95, 105)))))
+
+dados_select_mapa_pos <- dados_PR_count.r.m.RS.pos %>% 
+  dplyr::select(code_health_region, media_aresta_saida2)
+
+coord_pontos_pos <- dplyr::left_join(mapa2, dados_select_mapa_pos, by = "code_health_region") %>% 
+  st_centroid()
+
+b1 <- mapa2 %>% 
+  dplyr::left_join(dados_select_mapa_pos, by = "code_health_region") %>% 
+  ggplot() +
+  geom_sf(aes(fill = media_aresta_saida2)) + 
+  scale_fill_gradient(
+  name = "aresta de saída (média ponderada em km)",
+  low = "white",
+  high = "grey20",
+  space = "Lab",
+  na.value = "grey50",
+  guide = "colourbar",
+  aesthetics = "fill") +
+  geom_sf_label(data = mapa2, aes(label = code), alpha = 0.85, label.size  = .75) +
+  ggtitle("B: 2018-2019") +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    height = unit(1, "cm"),
+    width = unit(1, "cm"),
+    pad_x = unit(0.1, "in"),
+    pad_y = unit(0.1, "in"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  ggspatial::annotation_scale() +
+  xlab("") +
+  ylab("")
+plot(b1)
+```
+
+- proporção de internações ocorridas fora do município de residência
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+dados_PR_count.r.m.RS.pos$prop_ocorr2 <- as.numeric(ifelse(dados_PR_count.r.m.RS.pos$prop_ocorr <=30, 30,
+              ifelse(dados_PR_count.r.m.RS.pos$prop_ocorr > 30 & dados_PR_count.r.m.RS.pos$prop_ocorr <=40, 40,
+          ifelse(dados_PR_count.r.m.RS.pos$prop_ocorr >40 & dados_PR_count.r.m.RS.pos$prop_ocorr <=50, 50,
+          ifelse(dados_PR_count.r.m.RS.pos$prop_ocorr >50 & dados_PR_count.r.m.RS.pos$prop_ocorr <=60, 60, 70)))))
+
+dados_select_mapa_pos <- dados_PR_count.r.m.RS.pos %>% 
+  dplyr::select(code_health_region, prop_ocorr2)
+
+coord_pontos_pos <- dplyr::left_join(mapa2, dados_select_mapa_pos, by = "code_health_region") %>% 
+  st_centroid()
+
+b3 <- mapa2 %>% 
+  dplyr::left_join(dados_select_mapa_pos, by = "code_health_region") %>% 
+  ggplot() +
+  geom_sf(aes(fill = prop_ocorr2)) + 
+  scale_fill_gradient(
+  name = "% internações",
+  low = "white",
+  high = "grey20",
+  space = "Lab",
+  na.value = "grey50",
+  guide = "colourbar",
+  aesthetics = "fill") +
+  geom_sf_label(data = mapa2, aes(label = code), alpha = 0.85, label.size  = .75) +
+  ggtitle("B: 2018-2019") +
+  annotation_north_arrow(
+    location = "br",
+    which_north = "true",
+    height = unit(1, "cm"),
+    width = unit(1, "cm"),
+    pad_x = unit(0.1, "in"),
+    pad_y = unit(0.1, "in"),
+    style = north_arrow_fancy_orienteering
+  ) +
+  ggspatial::annotation_scale() +
+xlab("") +
+  ylab("")
+plot(b3)
+```
+
+# junção figuras pré e pós regionalização
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+ab1 <- ggpubr::ggarrange(a1, b1, ncol=2, nrow=1, common.legend = TRUE, legend="bottom")  
+plot(ab1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+ggsave(file = "mapa.distancia.ponderada.bienio.svg", ab1,
+       device = "svg", units = "cm", width = 30, height = 15) 
+```
+
+
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+ab3 <- ggpubr::ggarrange(a3, b3, ncol=2, nrow=1, common.legend = TRUE, legend="bottom")  
+plot(ab3)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+ggsave(file = "mapa.prop.internacao.bienio.svg", ab3,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15) 
+```
+
+
+# indicadores de saúde e oferta de serviços
+
+- SINASC
+- SIM
+- CNES
+
+- n. NV
+- % MBPN (< 1500 g)
+- % prematuridade extrema (< 28s)
+- % apgar <=7 5min
+- % idade materna >= 35 anos
+- TMI
+- TMneo
+- TMposneo
+- leitos de UTI neo
+
+- pré-processamento
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_indicadores <- readxl::read_xlsx("dados_indicadores_municipios_PR_2023.xlsx")
+dados_indicadores$CODMUNRES <- as.numeric(substr(dados_indicadores$municipio, 1, 6))
+dados_indicadores.r <- dados_indicadores %>% dplyr::select(-c(municipio, CODMUNRES))
+
+dados_indicadores.r.2 <- dados_indicadores.r %>% 
+  gather()
+
+dados_indicadores.r.2$CODMUNRES <- rep(dados_indicadores$CODMUNRES, 9*12)
+dados_indicadores.r.2$periodo <- rep(rep(c(2008:2019), each = 399), 9)
+dados_indicadores.r.2$bienio <- ifelse(dados_indicadores.r.2$periodo == 2008 |
+                                    dados_indicadores.r.2$periodo == 2009, "2008-2009",
+                                  ifelse(dados_indicadores.r.2$periodo == 2010 |
+                                    dados_indicadores.r.2$periodo == 2011, "2010-2011",
+                                  ifelse(dados_indicadores.r.2$periodo == 2012 |
+                                    dados_indicadores.r.2$periodo == 2013, "2012-2013",
+                                  ifelse(dados_indicadores.r.2$periodo == 2014 |
+                                           dados_indicadores.r.2$periodo == 2015, "2014-2015",
+                                         ifelse(dados_indicadores.r.2$periodo == 2016 |
+                                    dados_indicadores.r.2$periodo == 2017, "2016-2017", "2018-2019")))))
+
+for(i in 1:nrow(dados_indicadores.r.2)){
+dados_indicadores.r.2$dados[i] <- substr(dados_indicadores.r.2$key[i], 
+                                         start = 1, stop = nchar(dados_indicadores.r.2$key[i]) - 4)
+}
+
+ibge_r <- dplyr::rename(ibge_r, "CODMUNRES" = "MUNIC_MOV")
+dados_indicadores.r.2 <- dplyr::left_join(dados_indicadores.r.2, 
+                              dplyr::select(ibge_r, c(city, CODMUNRES, RS, M)), 
+                              by = "CODMUNRES")
+```
+
+- agrupar dados por biênio, RS, macrorregião
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_indicadores.r.3 <- dados_indicadores.r.2 %>% 
+  dplyr::group_by(bienio, RS, M, dados) %>% 
+  dplyr::summarise(s.value = sum(value))
+
+dados_indicadores.r.3$bienio_RS <- paste(dados_indicadores.r.3$bienio, 
+                                         dados_indicadores.r.3$RS, 
+                                         sep= ".")
+
+dados_indicadores.r.3 <- as.data.frame(dados_indicadores.r.3)
+```
+
+- modificar a disposição dos dados para o cálculo dos indicadores
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_indicadores.r.4 <- dados_indicadores.r.3 %>% 
+  dplyr::select(bienio_RS, dados, s.value) %>% 
+  tidyr::spread(key = dados, value = s.value)
+
+dados_indicadores.r.4$bienio <- substr(dados_indicadores.r.4$bienio_RS, start = 1, stop = 9)
+
+for(i in 1:nrow(dados_indicadores.r.4)){
+  dados_indicadores.r.4$RS[i] <- substr(dados_indicadores.r.4$bienio_RS[i], start = 11, 
+                                     stop = nchar(dados_indicadores.r.4$bienio_RS[i]))
+}
+```
+
+- cálculo dos indicadores
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_indicadores.r.4$prop.MBPN <- (dados_indicadores.r.4$MBPN/ dados_indicadores.r.4$NV)*100
+dados_indicadores.r.4$prop.IG.28 <- (dados_indicadores.r.4$IG/ dados_indicadores.r.4$NV)*100
+dados_indicadores.r.4$prop.Apgar5.7 <- (dados_indicadores.r.4$Apgar/ dados_indicadores.r.4$NV)*100
+dados_indicadores.r.4$prop.idadeM.35 <- (dados_indicadores.r.4$idadem/ dados_indicadores.r.4$NV)*100
+dados_indicadores.r.4$TMI <- (dados_indicadores.r.4$ObitoInfantil/dados_indicadores.r.4$NV)*1000
+dados_indicadores.r.4$TNeo <- (dados_indicadores.r.4$ObitoNeo/dados_indicadores.r.4$NV)*1000
+dados_indicadores.r.4$TPN <- (dados_indicadores.r.4$ObitoPN/dados_indicadores.r.4$NV)*1000
+dados_indicadores.r.4$UTIneo.NV <- (dados_indicadores.r.4$UTIneo/dados_indicadores.r.4$NV)*1000
+```
+
+- TMNeo geral por biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_indicadores.r.4 %>% 
+  select(NV, ObitoNeo, bienio) %>% 
+  group_by(bienio) %>% 
+  summarise(s.NV = sum(NV), 
+            s.ObitoNeo = sum(ObitoNeo),
+            TMNeo = round((s.ObitoNeo/s.NV),5)*1000)
+```
+
+- TMNeo por biênio e RS
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+TMNeo <- dados_indicadores.r.4 %>% 
+  select(NV, ObitoNeo, bienio, RS) %>%
+  filter(bienio == "2008-2009" | bienio == "2018-2019") %>% 
+  group_by(bienio, RS) %>% 
+  summarise(s.NV = sum(NV), 
+            s.ObitoNeo = sum(ObitoNeo),
+            TMN = round((s.ObitoNeo/s.NV),5)*1000) %>% 
+  arrange(bienio, RS)
+
+v.2008_2009 <- TMNeo$TMN[TMNeo$bienio == "2008-2009"]
+v.2018_2019 <- TMNeo$TMN[TMNeo$bienio == "2018-2019"]
+
+VP.TMN <- round(((v.2018_2019 - v.2008_2009)/v.2008_2009)*100,2)
+names(VP.TMN)[1:22] <- TMNeo$RS[TMNeo$bienio == "2008-2009"]
+VP.TMN
+```
+
+- Gráfico de perfis
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+dados_PR_count.r.m.RS$bienio_RS <- paste(dados_PR_count.r.m.RS$bienio, 
+                                         dados_PR_count.r.m.RS$RS, sep = ".")
+```
+
+# média de distância ponderada pelo fluxo segundo Macrorregião, RS e biênio
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+library(lmerTest)
+library(hnp)
+
+medida_repetida <- dplyr::left_join(dados_PR_count.r.m.RS, 
+                                    dplyr::select(dados_indicadores.r.4, 
+                                                  c(UTIneo.NV, prop.MBPN, prop.IG.28, prop.Apgar5.7,
+                                                    prop.idadeM.35, TMI, TNeo, 
+                                                    TPN, bienio_RS)),
+                                                  by = "bienio_RS")
+medida_repetida$bienio <- as.factor(as.character(medida_repetida$bienio))
+medida_repetida$G <- rep(1, nrow(medida_repetida))
+medida_repetida$G <- as.factor(medida_repetida$G)
+
+medida_repetida$bienio.num <- ifelse(medida_repetida$bienio == "2008-2009", 0,
+                                     ifelse(medida_repetida$bienio == "2010-2011", 1,
+                                            ifelse(medida_repetida$bienio == "2012-2013", 2,
+                                                   ifelse(medida_repetida$bienio == "2014-2015", 3,
+                                                          ifelse(medida_repetida$bienio == "2016-2017", 4, 5)))))
+
+```
+
+- distância origem destino ponderada pelo fluxo de saída
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t1.1 <- ggplot(medida_repetida, aes(x=bienio, y=media_aresta_saida, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+scale_y_continuous(limits = c(20,160), breaks = c(20,40,60,80,100,120,140,160)) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("distância média ponderada (Km)") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") + facet_wrap(~M_res)
+  
+plot(t1.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(media_aresta_saida ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+round(confint(lmer(media_aresta_saida ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 2)
+```
+
+
+- n. internações ocorridas fora do município de residência a cada 1000 NV
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t2.1 <- ggplot(medida_repetida, aes(x=bienio, y=taxa.fluxo, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+scale_y_continuous(limits = c(20,120), breaks = c(20,40,60,80,100,120)) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("nº internações a cada 1.000 NV") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") + facet_wrap(~M_res)
+  
+plot(t2.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(taxa.fluxo ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+round(confint(lmer(taxa.fluxo ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- proporção de internações ocorridas fora do município de residência
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t3.1 <- ggplot(medida_repetida, aes(x=bienio, y=prop_ocorr, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+scale_y_continuous(limits = c(10,90), breaks = c(10,30,50,70,90)) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("distância média ponderada (Km)") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") +  facet_wrap(~M_res)
+  
+plot(t3.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(prop_ocorr ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round(confint(lmer(prop_ocorr ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- %MBPN
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t4.1 <- ggplot(medida_repetida, aes(x=bienio, y=prop.MBPN, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("% Muito Baixo Peso ao Nascer") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") +  facet_wrap(~M_res)
+  
+plot(t4.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(prop.MBPN ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+(lmer(prop.MBPN ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))@beta
+
+round(confint(lmer(prop.MBPN ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- % IG28
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t5.1 <- ggplot(medida_repetida, aes(x=bienio, y=prop.IG.28, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("% Idade Gestacional < 28 semanas") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") +  facet_wrap(~M_res)
+  
+plot(t5.1)
+```
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(prop.IG.28 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round((lmer(prop.IG.28 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))@beta,2)
+
+round(confint(lmer(prop.IG.28 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- % Apgar 5 min <= 7
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t6.1 <- ggplot(medida_repetida, aes(x=bienio, y=prop.Apgar5.7, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+#geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("% Apgar menor ou igual a 7 5º minuto") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") #+  facet_wrap(~M_res)
+  
+plot(t6.1)
+```
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(prop.Apgar5.7 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round(confint(lmer(prop.Apgar5.7 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- % idade materna >= 35
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t7.1 <- ggplot(medida_repetida, aes(x=bienio, y=prop.idadeM.35, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+#geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("% idade materna maior ou igual a 35 anos") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") #+  facet_wrap(~M_res)
+  
+plot(t7.1)
+```
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(prop.idadeM.35 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round(confint(lmer(prop.idadeM.35 ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- leitos de UTI neonatal a cada 1.000 NV
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t8.1 <- ggplot(medida_repetida, aes(x=bienio, y=UTIneo.NV, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+#geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("Leitos de UTI Neonatal a cada 1.000 NV") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") #+  facet_wrap(~M_res)
+
+plot(t8.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(UTIneo.NV ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round(confint(lmer(UTIneo.NV ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+- TM neonatal
+```{r, results = 'hold', warning = FALSE, message = FALSE, echo = FALSE, fig.align = 'center', cache = FALSE}
+t9.1 <- ggplot(medida_repetida, aes(x=bienio, y=TNeo, group = RS)) +
+geom_line(size = 0.15, lty = 3) +
+geom_dl(aes(label = RS), method = list("last.qp", cex = 0.7)) +
+geom_point(size = 0.15) +
+stat_summary(fun.y=mean, geom="line", lwd=.3, aes(group = G, color= G), color = "grey40") +
+xlab("") +
+ylab("Taxa de Mortalidade Neonatal") +
+theme_classic(base_line_size = .2, base_rect_size = .2) +
+theme(axis.text.x = element_text(size=8, face = "bold")) +
+theme(axis.text.y = element_text(size=8, face = "bold"), 
+      axis.title.y = element_text(size=8, face = "bold")) +
+  guides(group = "none", color = "none") +  facet_wrap(~M_res)
+  
+plot(t9.1)
+```
+
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(TNeo ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+round(confint(lmer(TNeo ~ bienio.num + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE)), 4)
+```
+
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+ggsave(file = "figura.distancia.ponderada.bienio.svg", t1.1,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15)
+
+ggsave(file = "figura.prop.internacao.bienio.svg", t3.1,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15)
+
+ggsave(file = "figura.TMneo.bienio.svg", t9.1,
+       device = "svg", dpi = 300, units = "cm", width = 30, height = 15)
+```
+
+# Modelo de regressão linear misto
+```{r, results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+summary(lmer(TNeo ~ bienio.num + media_aresta_saida + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+confint(lmer(TNeo ~ bienio.num + media_aresta_saida + (1|RS), 
+                      data = medida_repetida, 
+                      REML=TRUE))
+
+m.REML <- lmer(TNeo ~ bienio.num + media_aresta_saida + prop_ocorr + UTIneo.NV +
+                     prop.MBPN + prop.IG.28 + prop.Apgar5.7 + prop.idadeM.35 +
+                     (1|RS), data = medida_repetida, 
+                     REML=TRUE)
+```
+
+- Scatter plots of standardized residuals versus fitted values
+```{r, message=FALSE, warning=FALSE, results='hold'}
+plot(m.REML)
+```
+
+- Half-Normal probability plot
+```{r, message=FALSE, warning=FALSE, results='hold'}
+hnp::hnp(m.REML, print=T)
+```
+
+- Plot of the residuals by experimental unit (EU)
+```{r, message=FALSE, warning=FALSE, results='hold'}
+plot(m.REML, RS ~ resid(.), abline = 0)
+```
+
+# coeficientes estimados
+```{r, message=FALSE, warning=FALSE, results='hold'}
+summary(m.REML)
+round(m.REML@beta, 4)
+round(confint(m.REML), 4)
+anova(m.REML)
+```
+
+# dados para grafos
+
+- 2008-2009
+```{r}
+#---------------------------------------------------------------------------------------
+# aresta
+data_edges <- dados_final.2 %>%
+  filter(bienio == "2008-2009") %>%
+  filter(UF == "PR") %>% 
+  select(mun_res, mun_mov,
+         RS_res, M_res,
+         int_LATITUDE,                                          
+         res_LATITUDE,                                          
+         int_LONGITUDE,                                         
+         res_LONGITUDE,
+         dist)
+
+names(data_edges)[1:2] <- c("Source", "Target") 
+write.csv(dplyr::select(data_edges, Source, Target, dist), "data_edges_AIH_pre_022023.csv", row.names = FALSE)
+
+#---------------------------------------------------------------------------------------
+# nó
+# banco de dados de labels para nós (gephi)
+list <-data.frame(Source = c(data_edges$Source, data_edges$Target))
+
+list <- list %>% 
+  dplyr::distinct()
+
+list <- dplyr::left_join(list, dplyr::select(data_edges, Source, RS_res, M_res), by = "Source")
+
+list <- list %>% 
+  dplyr::distinct()
+
+names(list)[1] <- "Id"
+list <- list %>% 
+  drop_na()
+
+write.csv2(list, "lista_label_AIH_pre_022023.csv", row.names = FALSE)
+```
+
+- 2018-2019
+```{r}
+#---------------------------------------------------------------------------------------
+# aresta
+data_edges <- dados_final.2 %>%
+  filter(bienio == "2018-2019") %>%
+  filter(UF == "PR") %>% 
+  select(mun_res, mun_mov,
+         RS_res, M_res,
+         int_LATITUDE,                                          
+         res_LATITUDE,                                          
+         int_LONGITUDE,                                         
+         res_LONGITUDE,
+         dist)
+
+names(data_edges)[1:2] <- c("Source", "Target") 
+write.csv(dplyr::select(data_edges, Source, Target, dist), "data_edges_AIH_pos_022023.csv", row.names = FALSE)
+
+#---------------------------------------------------------------------------------------
+# nó
+# banco de dados de labels para nós (gephi)
+list <-data.frame(Source = c(data_edges$Source, data_edges$Target))
+
+list <- list %>% 
+  dplyr::distinct()
+
+list <- dplyr::left_join(list, dplyr::select(data_edges, Source, RS_res, M_res), by = "Source")
+
+list <- list %>% 
+  dplyr::distinct()
+
+names(list)[1] <- "Id"
+list <- list %>% 
+  drop_na()
+
+write.csv2(list, "lista_label_AIH_pos_022023.csv", row.names = FALSE)
+```
+
+
+
