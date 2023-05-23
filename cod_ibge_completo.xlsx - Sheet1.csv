@@ -1,0 +1,400 @@
+UF,Nome_UF,Mesorregiao Geografica,Nome_Mesorregiao,Microrregiao Geografica,Nome_Microrregiao,Municipio,city_ibge_code,Nome_Municipio,city,Residents,RS,M,CODMUNRES
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,00103,4100103,Abatiá,abatiá,7764,18,norte,410010
+41,Paraná,10,Metropolitana de Curitiba,035,Cerro Azul,00202,4100202,Adrianópolis,adrianópolis,6376,2,leste,410020
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,00301,4100301,Agudos do Sul,agudos do sul,8270,2,leste,410030
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,00400,4100400,Almirante Tamandaré,almirante tamandaré,103204,2,leste,410040
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,00459,4100459,Altamira do Paraná,altamira do paraná,4306,11,noroeste,410045
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,28625,4128625,Alto Paraíso,alto paraíso,3206,12,noroeste,412862
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,00608,4100608,Alto Paraná,alto paraná,13663,14,noroeste,410060
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,00707,4100707,Alto Piquiri,alto piquiri,10179,12,noroeste,410070
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,00509,4100509,Altônia,altônia,20516,12,noroeste,410050
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,00806,4100806,Alvorada do Sul,alvorada do sul,10283,17,norte,410080
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,00905,4100905,Amaporã,amaporã,5443,14,noroeste,410090
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,01002,4101002,Ampére,ampére,17308,8,oeste,410100
+41,Paraná,06,Oeste Paranaense,023,Cascavel,01051,4101051,Anahy,anahy,2874,10,oeste,410105
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,01101,4101101,Andirá,andirá,20610,18,norte,410110
+41,Paraná,03,Norte Central Paranaense,006,Astorga,01150,4101150,Ângulo,ângulo,2859,15,noroeste,410115
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,01200,4101200,Antonina,antonina,18891,1,leste,410120
+41,Paraná,09,Sudeste Paranaense,034,São Mateus do Sul,01309,4101309,Antônio Olinto,antônio olinto,7351,6,leste,410130
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,01408,4101408,Apucarana,apucarana,120919,16,norte,410140
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,01507,4101507,Arapongas,arapongas,104150,16,norte,410150
+41,Paraná,05,Centro Oriental Paranaense,020,Jaguariaíva,01606,4101606,Arapoti,arapoti,25855,3,leste,410160
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,01655,4101655,Arapuã,arapuã,3561,22,norte,410165
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,01705,4101705,Araruna,araruna,13419,11,noroeste,410170
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,01804,4101804,Araucária,araucária,119123,2,leste,410180
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,01853,4101853,Ariranha do Ivaí,ariranha do ivaí,2453,22,norte,410185
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,01903,4101903,Assaí,assaí,16354,17,norte,410190
+41,Paraná,06,Oeste Paranaense,022,Toledo,02000,4102000,Assis Chateaubriand,assis chateaubriand,33025,20,oeste,410200
+41,Paraná,03,Norte Central Paranaense,006,Astorga,02109,4102109,Astorga,astorga,24698,15,noroeste,410210
+41,Paraná,03,Norte Central Paranaense,006,Astorga,02208,4102208,Atalaia,atalaia,3913,15,noroeste,410220
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,02307,4102307,Balsa Nova,balsa nova,11300,2,leste,410230
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,02406,4102406,Bandeirantes,bandeirantes,32184,18,norte,410240
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,02505,4102505,Barbosa Ferraz,barbosa ferraz,12656,11,noroeste,410250
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,02703,4102703,Barra do Jacaré,barra do jacaré,2727,19,norte,410270
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,02604,4102604,Barracão,barracão,9735,8,oeste,410260
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,02752,4102752,Bela Vista da Caroba,bela vista da caroba,3945,8,oeste,410275
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,02802,4102802,Bela Vista do Paraíso,bela vista do paraíso,15079,17,norte,410280
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,02901,4102901,Bituruna,bituruna,15880,6,leste,410290
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,03008,4103008,Boa Esperança,boa esperança,4568,11,noroeste,410300
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,03024,4103024,Boa Esperança do Iguaçu,boa esperança do iguaçu,2764,8,oeste,410302
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,03040,4103040,Boa Ventura de São Roque,boa ventura de são roque,6554,5,leste,410304
+41,Paraná,06,Oeste Paranaense,023,Cascavel,03057,4103057,Boa Vista da Aparecida,boa vista da aparecida,7911,10,oeste,410305
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,03107,4103107,Bocaiúva do Sul,bocaiúva do sul,10987,2,leste,410310
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,03156,4103156,Bom Jesus do Sul,bom jesus do sul,3796,8,oeste,410315
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,03206,4103206,Bom Sucesso,bom sucesso,6561,16,norte,410320
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,03222,4103222,Bom Sucesso do Sul,bom sucesso do sul,3293,7,oeste,410322
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,03305,4103305,Borrazópolis,borrazópolis,7878,16,norte,410330
+41,Paraná,06,Oeste Paranaense,023,Cascavel,03354,4103354,Braganey,braganey,5735,10,oeste,410335
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,03370,4103370,Brasilândia do Sul,brasilândia do sul,3209,12,noroeste,410337
+41,Paraná,03,Norte Central Paranaense,006,Astorga,03404,4103404,Cafeara,cafeara,2695,17,norte,410340
+41,Paraná,06,Oeste Paranaense,023,Cascavel,03453,4103453,Cafelândia,cafelândia,14662,10,oeste,410345
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,03479,4103479,Cafezal do Sul,cafezal do sul,4290,12,noroeste,410347
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,03503,4103503,Califórnia,califórnia,8069,16,norte,410350
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,03602,4103602,Cambará,cambará,23886,19,norte,410360
+41,Paraná,03,Norte Central Paranaense,011,Londrina,03701,4103701,Cambé,cambé,96733,17,norte,410370
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,03800,4103800,Cambira,cambira,7236,16,norte,410380
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,03909,4103909,Campina da Lagoa,campina da lagoa,15394,11,noroeste,410390
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,03958,4103958,Campina do Simão,campina do simão,4076,5,leste,410395
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,04006,4104006,Campina Grande do Sul,campina grande do sul,38769,2,leste,410400
+41,Paraná,06,Oeste Paranaense,023,Cascavel,04055,4104055,Campo Bonito,campo bonito,4407,10,oeste,410405
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,04105,4104105,Campo do Tenente,campo do tenente,7125,2,leste,410410
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,04204,4104204,Campo Largo,campo largo,112377,2,leste,410420
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,04253,4104253,Campo Magro,campo magro,24843,2,leste,410425
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,04303,4104303,Campo Mourão,campo mourão,87194,11,noroeste,410430
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,04402,4104402,Cândido de Abreu,cândido de abreu,16655,22,norte,410440
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,04428,4104428,Candói,candói,14983,5,leste,410442
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,04451,4104451,Cantagalo,cantagalo,12952,5,leste,410445
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,04501,4104501,Capanema,capanema,18526,8,oeste,410450
+41,Paraná,06,Oeste Paranaense,023,Cascavel,04600,4104600,Capitão Leônidas Marques,capitão leônidas marques,14970,10,oeste,410460
+41,Paraná,05,Centro Oriental Paranaense,021,Ponta Grossa,04659,4104659,Carambeí,carambeí,19163,3,leste,410465
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,04709,4104709,Carlópolis,carlópolis,13706,19,norte,410470
+41,Paraná,06,Oeste Paranaense,023,Cascavel,04808,4104808,Cascavel,cascavel,286205,10,oeste,410480
+41,Paraná,05,Centro Oriental Paranaense,021,Ponta Grossa,04907,4104907,Castro,castro,67084,3,leste,410490
+41,Paraná,06,Oeste Paranaense,023,Cascavel,05003,4105003,Catanduvas,catanduvas,10202,10,oeste,410500
+41,Paraná,03,Norte Central Paranaense,006,Astorga,05102,4105102,Centenário do Sul,centenário do sul,11190,17,norte,410510
+41,Paraná,10,Metropolitana de Curitiba,035,Cerro Azul,05201,4105201,Cerro Azul,cerro azul,16938,2,leste,410520
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,05300,4105300,Céu Azul,céu azul,11032,10,oeste,410530
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,05409,4105409,Chopinzinho,chopinzinho,19679,7,oeste,410540
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,05508,4105508,Cianorte,cianorte,69958,13,noroeste,410550
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,05607,4105607,Cidade Gaúcha,cidade gaúcha,11062,13,noroeste,410560
+41,Paraná,08,Centro-Sul Paranaense,030,Palmas,05706,4105706,Clevelândia,clevelândia,17240,7,oeste,410570
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,05805,4105805,Colombo,colombo,212967,2,leste,410580
+41,Paraná,03,Norte Central Paranaense,006,Astorga,05904,4105904,Colorado,colorado,22345,15,noroeste,410590
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,06001,4106001,Congonhinhas,congonhinhas,8279,18,norte,410600
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,06100,4106100,Conselheiro Mairinck,conselheiro mairinck,3636,19,norte,410610
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,06209,4106209,Contenda,contenda,15891,2,leste,410620
+41,Paraná,06,Oeste Paranaense,023,Cascavel,06308,4106308,Corbélia,corbélia,16312,10,oeste,410630
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,06407,4106407,Cornélio Procópio,cornélio procópio,46928,18,norte,410640
+41,Paraná,08,Centro-Sul Paranaense,030,Palmas,06456,4106456,Coronel Domingos Soares,coronel domingos soares,7238,7,oeste,410645
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,06506,4106506,Coronel Vivida,coronel vivida,21749,7,oeste,410650
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,06555,4106555,Corumbataí do Sul,corumbataí do sul,4002,11,noroeste,410655
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,06803,4106803,Cruz Machado,cruz machado,18040,6,leste,410680
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,06571,4106571,Cruzeiro do Iguaçu,cruzeiro do iguaçu,4278,8,oeste,410657
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,06605,4106605,Cruzeiro do Oeste,cruzeiro do oeste,20416,12,noroeste,410660
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,06704,4106704,Cruzeiro do Sul,cruzeiro do sul,4563,14,noroeste,410670
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,06852,4106852,Cruzmaltina,cruzmaltina,3162,22,norte,410685
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,06902,4106902,Curitiba,curitiba,1751907,2,leste,410690
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,07009,4107009,Curiúva,curiúva,13923,21,leste,410700
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,07108,4107108,Diamante do Norte,diamante do norte,5516,14,noroeste,410710
+41,Paraná,06,Oeste Paranaense,023,Cascavel,07124,4107124,Diamante do Sul,diamante do sul,3510,10,oeste,410712
+41,Paraná,06,Oeste Paranaense,022,Toledo,07157,4107157,Diamante D'Oeste,diamante d'oeste,5027,20,oeste,410715
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,07207,4107207,Dois Vizinhos,dois vizinhos,36179,8,oeste,410720
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,07256,4107256,Douradina,douradina,7445,12,noroeste,410725
+41,Paraná,03,Norte Central Paranaense,008,Floraí,07306,4107306,Doutor Camargo,doutor camargo,5828,15,noroeste,410730
+41,Paraná,10,Metropolitana de Curitiba,035,Cerro Azul,28633,4128633,Doutor Ulysses,doutor ulysses,5727,2,leste,412863
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,07405,4107405,Enéas Marques,enéas marques,6103,8,oeste,410740
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,07504,4107504,Engenheiro Beltrão,engenheiro beltrão,13906,11,noroeste,410750
+41,Paraná,06,Oeste Paranaense,022,Toledo,07538,4107538,Entre Rios do Oeste,entre rios do oeste,3926,20,oeste,410753
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,07520,4107520,Esperança Nova,esperança nova,1970,12,noroeste,410752
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,07546,4107546,Espigão Alto do Iguaçu,espigão alto do iguaçu,4677,10,oeste,410754
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,07553,4107553,Farol,farol,3472,11,noroeste,410755
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,07603,4107603,Faxinal,faxinal,16314,16,norte,410760
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,07652,4107652,Fazenda Rio Grande,fazenda rio grande,81675,2,leste,410765
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,07702,4107702,Fênix,fênix,4802,11,noroeste,410770
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,07736,4107736,Fernandes Pinheiro,fernandes pinheiro,5932,4,leste,410773
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,07751,4107751,Figueira,figueira,8293,19,norte,410775
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,07850,4107850,Flor da Serra do Sul,flor da serra do sul,4726,8,oeste,410785
+41,Paraná,03,Norte Central Paranaense,008,Floraí,07801,4107801,Floraí,floraí,5050,15,noroeste,410780
+41,Paraná,03,Norte Central Paranaense,008,Floraí,07900,4107900,Floresta,floresta,5931,15,noroeste,410790
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,08007,4108007,Florestópolis,florestópolis,11222,17,norte,410800
+41,Paraná,03,Norte Central Paranaense,006,Astorga,08106,4108106,Flórida,flórida,2543,15,noroeste,410810
+41,Paraná,06,Oeste Paranaense,022,Toledo,08205,4108205,Formosa do Oeste,formosa do oeste,7541,10,oeste,410820
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,08304,4108304,Foz do Iguaçu,foz do iguaçu,256088,9,oeste,410830
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,08452,4108452,Foz do Jordão,foz do jordão,5420,5,leste,410845
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,08320,4108320,Francisco Alves,francisco alves,6418,12,noroeste,410832
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,08403,4108403,Francisco Beltrão,francisco beltrão,78943,8,oeste,410840
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,08502,4108502,General Carneiro,general carneiro,13669,6,leste,410850
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,08551,4108551,Godoy Moreira,godoy moreira,3337,22,norte,410855
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,08601,4108601,Goioerê,goioerê,29018,11,noroeste,410860
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,08650,4108650,Goioxim,goioxim,7503,5,leste,410865
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,08700,4108700,Grandes Rios,grandes rios,6625,16,norte,410870
+41,Paraná,06,Oeste Paranaense,022,Toledo,08809,4108809,Guaíra,guaíra,30704,20,oeste,410880
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,08908,4108908,Guairaçá,guairaçá,6197,14,noroeste,410890
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,08957,4108957,Guamiranga,guamiranga,7900,4,leste,410895
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,09005,4109005,Guapirama,guapirama,3891,19,norte,410900
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,09104,4109104,Guaporema,guaporema,2219,13,noroeste,410910
+41,Paraná,03,Norte Central Paranaense,006,Astorga,09203,4109203,Guaraci,guaraci,5227,17,norte,410920
+41,Paraná,06,Oeste Paranaense,023,Cascavel,09302,4109302,Guaraniaçu,guaraniaçu,14582,10,oeste,410930
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,09401,4109401,Guarapuava,guarapuava,167328,5,leste,410940
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,09500,4109500,Guaraqueçaba,guaraqueçaba,7871,1,leste,410950
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,09609,4109609,Guaratuba,guaratuba,32095,1,leste,410960
+41,Paraná,08,Centro-Sul Paranaense,030,Palmas,09658,4109658,Honório Serpa,honório serpa,5955,7,oeste,410965
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,09708,4109708,Ibaiti,ibaiti,28751,19,norte,410970
+41,Paraná,06,Oeste Paranaense,023,Cascavel,09757,4109757,Ibema,ibema,6066,10,oeste,410975
+41,Paraná,03,Norte Central Paranaense,011,Londrina,09807,4109807,Ibiporã,ibiporã,48198,17,norte,410980
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,09906,4109906,Icaraíma,icaraíma,8839,12,noroeste,410990
+41,Paraná,03,Norte Central Paranaense,006,Astorga,10003,4110003,Iguaraçu,iguaraçu,3982,15,noroeste,411000
+41,Paraná,06,Oeste Paranaense,023,Cascavel,10052,4110052,Iguatu,iguatu,2234,10,oeste,411005
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,10078,4110078,Imbaú,imbaú,11274,21,leste,411007
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,10102,4110102,Imbituva,imbituva,28455,4,leste,411010
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,10201,4110201,Inácio Martins,inácio martins,10943,4,leste,411020
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,10300,4110300,Inajá,inajá,2988,14,noroeste,411030
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,10409,4110409,Indianópolis,indianópolis,4299,13,noroeste,411040
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,10508,4110508,Ipiranga,ipiranga,14150,3,leste,411050
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,10607,4110607,Iporã,iporã,14981,12,noroeste,411060
+41,Paraná,06,Oeste Paranaense,022,Toledo,10656,4110656,Iracema do Oeste,iracema do oeste,2578,10,oeste,411065
+41,Paraná,09,Sudeste Paranaense,032,Irati,10706,4110706,Irati,irati,56207,4,leste,411070
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,10805,4110805,Iretama,iretama,10622,11,noroeste,411080
+41,Paraná,03,Norte Central Paranaense,006,Astorga,10904,4110904,Itaguajé,itaguajé,4568,15,noroeste,411090
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,10953,4110953,Itaipulândia,itaipulândia,9026,9,oeste,411095
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,11001,4111001,Itambaracá,itambaracá,6759,18,norte,411100
+41,Paraná,03,Norte Central Paranaense,008,Floraí,11100,4111100,Itambé,itambé,5979,15,noroeste,411110
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,11209,4111209,Itapejara d'Oeste,itapejara d'oeste,10531,7,oeste,411120
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,11258,4111258,Itaperuçu,itaperuçu,23887,2,leste,411125
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,11308,4111308,Itaúna do Sul,itaúna do sul,3583,14,noroeste,411130
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,11407,4111407,Ivaí,ivaí,12815,3,leste,411140
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,11506,4111506,Ivaiporã,ivaiporã,31816,22,norte,411150
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,11555,4111555,Ivaté,ivaté,7514,12,noroeste,411155
+41,Paraná,03,Norte Central Paranaense,008,Floraí,11605,4111605,Ivatuba,ivatuba,3010,15,noroeste,411160
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,11704,4111704,Jaboti,jaboti,4902,19,norte,411170
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,11803,4111803,Jacarezinho,jacarezinho,39121,19,norte,411180
+41,Paraná,03,Norte Central Paranaense,006,Astorga,11902,4111902,Jaguapitã,jaguapitã,12225,17,norte,411190
+41,Paraná,05,Centro Oriental Paranaense,020,Jaguariaíva,12009,4112009,Jaguariaíva,jaguariaíva,32606,3,leste,411200
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,12108,4112108,Jandaia do Sul,jandaia do sul,20269,16,norte,411210
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,12207,4112207,Janiópolis,janiópolis,6532,11,noroeste,411220
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,12306,4112306,Japira,japira,4903,19,norte,411230
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,12405,4112405,Japurá,japurá,8549,13,noroeste,411240
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,12504,4112504,Jardim Alegre,jardim alegre,12324,22,norte,411250
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,12603,4112603,Jardim Olinda,jardim olinda,1409,14,noroeste,411260
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,12702,4112702,Jataizinho,jataizinho,11875,17,norte,411270
+41,Paraná,06,Oeste Paranaense,022,Toledo,12751,4112751,Jesuítas,jesuítas,9001,10,oeste,411275
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,12801,4112801,Joaquim Távora,joaquim távora,10736,19,norte,411280
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,12900,4112900,Jundiaí do Sul,jundiaí do sul,3433,19,norte,411290
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,12959,4112959,Juranda,juranda,7641,11,noroeste,411295
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,13007,4113007,Jussara,jussara,6610,13,noroeste,411300
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,13106,4113106,Kaloré,kaloré,4506,16,norte,411310
+41,Paraná,10,Metropolitana de Curitiba,036,Lapa,13205,4113205,Lapa,lapa,44932,2,leste,411320
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,13254,4113254,Laranjal,laranjal,6360,5,leste,411325
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,13304,4113304,Laranjeiras do Sul,laranjeiras do sul,30777,5,leste,411330
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,13403,4113403,Leópolis,leópolis,4145,18,norte,411340
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,13429,4113429,Lidianópolis,lidianópolis,3973,22,norte,411342
+41,Paraná,06,Oeste Paranaense,023,Cascavel,13452,4113452,Lindoeste,lindoeste,5361,10,oeste,411345
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,13502,4113502,Loanda,loanda,21201,14,noroeste,411350
+41,Paraná,03,Norte Central Paranaense,006,Astorga,13601,4113601,Lobato,lobato,4401,15,noroeste,411360
+41,Paraná,03,Norte Central Paranaense,011,Londrina,13700,4113700,Londrina,londrina,506701,17,norte,411370
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,13734,4113734,Luiziana,luiziana,7315,11,noroeste,411373
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,13759,4113759,Lunardelli,lunardelli,5160,22,norte,411375
+41,Paraná,03,Norte Central Paranaense,006,Astorga,13809,4113809,Lupionópolis,lupionópolis,4592,17,norte,411380
+41,Paraná,09,Sudeste Paranaense,032,Irati,13908,4113908,Mallet,mallet,12973,4,leste,411390
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,14005,4114005,Mamborê,mamborê,13961,11,noroeste,411400
+41,Paraná,03,Norte Central Paranaense,006,Astorga,14104,4114104,Mandaguaçu,mandaguaçu,19781,15,noroeste,411410
+41,Paraná,03,Norte Central Paranaense,009,Maringá,14203,4114203,Mandaguari,mandaguari,32658,15,noroeste,411420
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,14302,4114302,Mandirituba,mandirituba,22220,2,leste,411430
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,14351,4114351,Manfrinópolis,manfrinópolis,3127,8,oeste,411435
+41,Paraná,08,Centro-Sul Paranaense,030,Palmas,14401,4114401,Mangueirinha,mangueirinha,17048,7,oeste,411440
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,14500,4114500,Manoel Ribas,manoel ribas,13169,22,norte,411450
+41,Paraná,06,Oeste Paranaense,022,Toledo,14609,4114609,Marechal Cândido Rondon,marechal cândido rondon,46819,20,oeste,411460
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,14708,4114708,Maria Helena,maria helena,5956,12,noroeste,411470
+41,Paraná,03,Norte Central Paranaense,009,Maringá,14807,4114807,Marialva,marialva,31959,15,noroeste,411480
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,14906,4114906,Marilândia do Sul,marilândia do sul,8863,16,norte,411490
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,15002,4115002,Marilena,marilena,6858,14,noroeste,411500
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,15101,4115101,Mariluz,mariluz,10224,12,noroeste,411510
+41,Paraná,03,Norte Central Paranaense,009,Maringá,15200,4115200,Maringá,maringá,357077,15,noroeste,411520
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,15309,4115309,Mariópolis,mariópolis,6268,7,oeste,411530
+41,Paraná,06,Oeste Paranaense,022,Toledo,15358,4115358,Maripá,maripá,5684,20,oeste,411535
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,15408,4115408,Marmeleiro,marmeleiro,13900,8,oeste,411540
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,15457,4115457,Marquinho,marquinho,4981,5,leste,411545
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,15507,4115507,Marumbi,marumbi,4603,16,norte,411550
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,15606,4115606,Matelândia,matelândia,16078,9,oeste,411560
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,15705,4115705,Matinhos,matinhos,29428,1,leste,411570
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,15739,4115739,Mato Rico,mato rico,3818,22,norte,411573
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,15754,4115754,Mauá da Serra,mauá da serra,8555,16,norte,411575
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,15804,4115804,Medianeira,medianeira,41817,9,oeste,411580
+41,Paraná,06,Oeste Paranaense,022,Toledo,15853,4115853,Mercedes,mercedes,5046,20,oeste,411585
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,15903,4115903,Mirador,mirador,2327,14,noroeste,411590
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,16000,4116000,Miraselva,miraselva,1862,17,norte,411600
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,16059,4116059,Missal,missal,10474,9,oeste,411605
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,16109,4116109,Moreira Sales,moreira sales,12606,11,noroeste,411610
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,16208,4116208,Morretes,morretes,15718,1,leste,411620
+41,Paraná,03,Norte Central Paranaense,006,Astorga,16307,4116307,Munhoz de Melo,munhoz de melo,3672,15,noroeste,411630
+41,Paraná,03,Norte Central Paranaense,006,Astorga,16406,4116406,Nossa Senhora das Graças,nossa senhora das graças,3836,15,noroeste,411640
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,16505,4116505,Nova Aliança do Ivaí,nova aliança do ivaí,1431,14,noroeste,411650
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,16604,4116604,Nova América da Colina,nova américa da colina,3478,18,norte,411660
+41,Paraná,06,Oeste Paranaense,023,Cascavel,16703,4116703,Nova Aurora,nova aurora,11866,10,oeste,411670
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,16802,4116802,Nova Cantu,nova cantu,7425,11,noroeste,411680
+41,Paraná,03,Norte Central Paranaense,006,Astorga,16901,4116901,Nova Esperança,nova esperança,26615,15,noroeste,411690
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,16950,4116950,Nova Esperança do Sudoeste,nova esperança do sudoeste,5098,8,oeste,411695
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,17008,4117008,Nova Fátima,nova fátima,8147,18,norte,411700
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,17057,4117057,Nova Laranjeiras,nova laranjeiras,11241,5,leste,411705
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,17107,4117107,Nova Londrina,nova londrina,13067,14,noroeste,411710
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,17206,4117206,Nova Olímpia,nova olímpia,5503,12,noroeste,411720
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,17255,4117255,Nova Prata do Iguaçu,nova prata do iguaçu,10377,8,oeste,411725
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,17214,4117214,Nova Santa Bárbara,nova santa bárbara,3908,18,norte,411721
+41,Paraná,06,Oeste Paranaense,022,Toledo,17222,4117222,Nova Santa Rosa,nova santa rosa,7626,20,oeste,411722
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,17271,4117271,Nova Tebas,nova tebas,7398,22,norte,411727
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,17297,4117297,Novo Itacolomi,novo itacolomi,2827,16,norte,411729
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,17305,4117305,Ortigueira,ortigueira,23380,21,leste,411730
+41,Paraná,03,Norte Central Paranaense,008,Floraí,17404,4117404,Ourizona,ourizona,3380,15,noroeste,411740
+41,Paraná,06,Oeste Paranaense,022,Toledo,17453,4117453,Ouro Verde do Oeste,ouro verde do oeste,5692,20,oeste,411745
+41,Paraná,03,Norte Central Paranaense,009,Maringá,17503,4117503,Paiçandu,paiçandu,35936,15,noroeste,411750
+41,Paraná,08,Centro-Sul Paranaense,030,Palmas,17602,4117602,Palmas,palmas,42888,7,oeste,411760
+41,Paraná,05,Centro Oriental Paranaense,021,Ponta Grossa,17701,4117701,Palmeira,palmeira,32123,3,leste,411770
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,17800,4117800,Palmital,palmital,14865,5,leste,411780
+41,Paraná,06,Oeste Paranaense,022,Toledo,17909,4117909,Palotina,palotina,28683,20,oeste,411790
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,18006,4118006,Paraíso do Norte,paraíso do norte,11772,14,noroeste,411800
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,18105,4118105,Paranacity,paranacity,10250,15,noroeste,411810
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,18204,4118204,Paranaguá,paranaguá,140469,1,leste,411820
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,18303,4118303,Paranapoema,paranapoema,2791,14,noroeste,411830
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,18402,4118402,Paranavaí,paranavaí,81590,14,noroeste,411840
+41,Paraná,06,Oeste Paranaense,022,Toledo,18451,4118451,Pato Bragado,pato bragado,4822,20,oeste,411845
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,18501,4118501,Pato Branco,pato branco,72370,7,oeste,411850
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,18600,4118600,Paula Freitas,paula freitas,5434,6,leste,411860
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,18709,4118709,Paulo Frontin,paulo frontin,6913,6,leste,411870
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,18808,4118808,Peabiru,peabiru,13624,11,noroeste,411880
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,18857,4118857,Perobal,perobal,5653,12,noroeste,411885
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,18907,4118907,Pérola,pérola,10208,12,noroeste,411890
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,19004,4119004,Pérola d'Oeste,pérola d'oeste,6761,8,oeste,411900
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,19103,4119103,Piên,piên,11236,2,leste,411910
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,19152,4119152,Pinhais,pinhais,117008,2,leste,411915
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,19251,4119251,Pinhal de São Bento,pinhal de são bento,2625,8,oeste,411925
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,19202,4119202,Pinhalão,pinhalão,6215,19,norte,411920
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,19301,4119301,Pinhão,pinhão,30208,5,leste,411930
+41,Paraná,05,Centro Oriental Paranaense,020,Jaguariaíva,19400,4119400,Piraí do Sul,piraí do sul,23424,3,leste,411940
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,19509,4119509,Piraquara,piraquara,93207,2,leste,411950
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,19608,4119608,Pitanga,pitanga,32638,5,leste,411960
+41,Paraná,03,Norte Central Paranaense,011,Londrina,19657,4119657,Pitangueiras,pitangueiras,2814,17,norte,411965
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,19707,4119707,Planaltina do Paraná,planaltina do paraná,4095,14,noroeste,411970
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,19806,4119806,Planalto,planalto,13654,8,oeste,411980
+41,Paraná,05,Centro Oriental Paranaense,021,Ponta Grossa,19905,4119905,Ponta Grossa,ponta grossa,311611,3,leste,411990
+41,Paraná,10,Metropolitana de Curitiba,038,Paranaguá,19954,4119954,Pontal do Paraná,pontal do paraná,20920,1,leste,411995
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,20002,4120002,Porecatu,porecatu,14189,17,norte,412000
+41,Paraná,10,Metropolitana de Curitiba,036,Lapa,20101,4120101,Porto Amazonas,porto amazonas,4514,3,leste,412010
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,20150,4120150,Porto Barreiro,porto barreiro,3663,5,leste,412015
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,20200,4120200,Porto Rico,porto rico,2530,14,noroeste,412020
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,20309,4120309,Porto Vitória,porto vitória,4020,6,leste,412030
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,20333,4120333,Prado Ferreira,prado ferreira,3434,17,norte,412033
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,20358,4120358,Pranchita,pranchita,5628,8,oeste,412035
+41,Paraná,03,Norte Central Paranaense,006,Astorga,20408,4120408,Presidente Castelo Branco,presidente castelo branco,4784,15,noroeste,412040
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,20507,4120507,Primeiro de Maio,primeiro de maio,10832,17,norte,412050
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,20606,4120606,Prudentópolis,prudentópolis,48792,5,leste,412060
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,20655,4120655,Quarto Centenário,quarto centenário,4856,11,noroeste,412065
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,20705,4120705,Quatiguá,quatiguá,7045,19,norte,412070
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,20804,4120804,Quatro Barras,quatro barras,19851,2,leste,412080
+41,Paraná,06,Oeste Paranaense,022,Toledo,20853,4120853,Quatro Pontes,quatro pontes,3803,20,oeste,412085
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,20903,4120903,Quedas do Iguaçu,quedas do iguaçu,30605,10,oeste,412090
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,21000,4121000,Querência do Norte,querência do norte,11729,14,noroeste,412100
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,21109,4121109,Quinta do Sol,quinta do sol,5088,11,noroeste,412110
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,21208,4121208,Quitandinha,quitandinha,17089,2,leste,412120
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,21257,4121257,Ramilândia,ramilândia,4134,9,oeste,412125
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,21307,4121307,Rancho Alegre,rancho alegre,3955,18,norte,412130
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,21356,4121356,Rancho Alegre D'Oeste,rancho alegre d'oeste,2847,11,noroeste,412135
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,21406,4121406,Realeza,realeza,16338,8,oeste,412140
+41,Paraná,09,Sudeste Paranaense,032,Irati,21505,4121505,Rebouças,rebouças,14176,4,leste,412150
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,21604,4121604,Renascença,renascença,6812,8,oeste,412160
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,21703,4121703,Reserva,reserva,25172,21,leste,412170
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,21752,4121752,Reserva do Iguaçu,reserva do iguaçu,7307,5,leste,412175
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,21802,4121802,Ribeirão Claro,ribeirão claro,10678,19,norte,412180
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,21901,4121901,Ribeirão do Pinhal,ribeirão do pinhal,13524,18,norte,412190
+41,Paraná,09,Sudeste Paranaense,032,Irati,22008,4122008,Rio Azul,rio azul,14093,4,leste,412200
+41,Paraná,03,Norte Central Paranaense,012,Faxinal,22107,4122107,Rio Bom,rio bom,3334,16,norte,412210
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,22156,4122156,Rio Bonito do Iguaçu,rio bonito do iguaçu,13661,5,leste,412215
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,22172,4122172,Rio Branco do Ivaí,rio branco do ivaí,3898,22,norte,412217
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,22206,4122206,Rio Branco do Sul,rio branco do sul,30650,2,leste,412220
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,22305,4122305,Rio Negro,rio negro,31274,2,leste,412230
+41,Paraná,03,Norte Central Paranaense,011,Londrina,22404,4122404,Rolândia,rolândia,57862,17,norte,412240
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,22503,4122503,Roncador,roncador,11537,11,noroeste,412250
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,22602,4122602,Rondon,rondon,8996,13,noroeste,412260
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,22651,4122651,Rosário do Ivaí,rosário do ivaí,5588,22,norte,412265
+41,Paraná,03,Norte Central Paranaense,010,Apucarana,22701,4122701,Sabáudia,sabáudia,6096,16,norte,412270
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,22800,4122800,Salgado Filho,salgado filho,4403,8,oeste,412280
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,22909,4122909,Salto do Itararé,salto do itararé,5178,19,norte,412290
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,23006,4123006,Salto do Lontra,salto do lontra,13689,8,oeste,412300
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,23105,4123105,Santa Amélia,santa amélia,3803,18,norte,412310
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,23204,4123204,Santa Cecília do Pavão,santa cecília do pavão,3646,18,norte,412320
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,23303,4123303,Santa Cruz de Monte Castelo,santa cruz de monte castelo,8092,14,noroeste,412330
+41,Paraná,03,Norte Central Paranaense,006,Astorga,23402,4123402,Santa Fé,santa fé,10432,15,noroeste,412340
+41,Paraná,06,Oeste Paranaense,022,Toledo,23501,4123501,Santa Helena,santa helena,23413,20,oeste,412350
+41,Paraná,03,Norte Central Paranaense,006,Astorga,23600,4123600,Santa Inês,santa inês,1818,15,noroeste,412360
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,23709,4123709,Santa Isabel do Ivaí,santa isabel do ivaí,8760,14,noroeste,412370
+41,Paraná,07,Sudoeste Paranaense,025,Capanema,23808,4123808,Santa Izabel do Oeste,santa izabel do oeste,13132,8,oeste,412380
+41,Paraná,06,Oeste Paranaense,023,Cascavel,23824,4123824,Santa Lúcia,santa lúcia,3925,10,oeste,412382
+41,Paraná,08,Centro-Sul Paranaense,028,Pitanga,23857,4123857,Santa Maria do Oeste,santa maria do oeste,11500,22,norte,412385
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,23907,4123907,Santa Mariana,santa mariana,12435,18,norte,412390
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,23956,4123956,Santa Mônica,santa mônica,3571,14,noroeste,412395
+41,Paraná,06,Oeste Paranaense,023,Cascavel,24020,4124020,Santa Tereza do Oeste,santa tereza do oeste,10332,10,oeste,412402
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,24053,4124053,Santa Terezinha de Itaipu,santa terezinha de itaipu,20841,9,oeste,412405
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,24004,4124004,Santana do Itararé,santana do itararé,5249,19,norte,412400
+41,Paraná,04,Norte Pioneiro Paranaense,016,Jacarezinho,24103,4124103,Santo Antônio da Platina,santo antônio da platina,42707,19,norte,412410
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,24202,4124202,Santo Antônio do Caiuá,santo antônio do caiuá,2727,14,noroeste,412420
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,24301,4124301,Santo Antônio do Paraíso,santo antônio do paraíso,2408,18,norte,412430
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,24400,4124400,Santo Antônio do Sudoeste,santo antônio do sudoeste,18893,8,oeste,412440
+41,Paraná,03,Norte Central Paranaense,006,Astorga,24509,4124509,Santo Inácio,santo inácio,5269,15,noroeste,412450
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,24608,4124608,São Carlos do Ivaí,são carlos do ivaí,6354,14,noroeste,412460
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,24707,4124707,São Jerônimo da Serra,são jerônimo da serra,11337,18,norte,412470
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,24806,4124806,São João,são joão,10599,7,oeste,412480
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,24905,4124905,São João do Caiuá,são joão do caiuá,5911,14,noroeste,412490
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,25001,4125001,São João do Ivaí,são joão do ivaí,11525,22,norte,412500
+41,Paraná,09,Sudeste Paranaense,034,São Mateus do Sul,25100,4125100,São João do Triunfo,são joão do triunfo,13704,3,leste,412510
+41,Paraná,03,Norte Central Paranaense,008,Floraí,25308,4125308,São Jorge do Ivaí,são jorge do ivaí,5517,15,noroeste,412530
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,25357,4125357,São Jorge do Patrocínio,são jorge do patrocínio,6041,12,noroeste,412535
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,25209,4125209,São Jorge d'Oeste,são jorge d'oeste,9085,8,oeste,412520
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,25407,4125407,São José da Boa Vista,são josé da boa vista,6511,19,norte,412540
+41,Paraná,06,Oeste Paranaense,022,Toledo,25456,4125456,São José das Palmeiras,são josé das palmeiras,3830,20,oeste,412545
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,25506,4125506,São José dos Pinhais,são josé dos pinhais,264210,2,leste,412550
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,25555,4125555,São Manoel do Paraná,são manoel do paraná,2098,13,noroeste,412555
+41,Paraná,09,Sudeste Paranaense,034,São Mateus do Sul,25605,4125605,São Mateus do Sul,são mateus do sul,41257,6,leste,412560
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,25704,4125704,São Miguel do Iguaçu,são miguel do iguaçu,25769,9,oeste,412570
+41,Paraná,06,Oeste Paranaense,022,Toledo,25753,4125753,São Pedro do Iguaçu,são pedro do iguaçu,6491,20,oeste,412575
+41,Paraná,03,Norte Central Paranaense,013,Ivaiporã,25803,4125803,São Pedro do Ivaí,são pedro do ivaí,10167,16,norte,412580
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,25902,4125902,São Pedro do Paraná,são pedro do paraná,2491,14,noroeste,412590
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,26009,4126009,São Sebastião da Amoreira,são sebastião da amoreira,8626,18,norte,412600
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,26108,4126108,São Tomé,são tomé,5349,13,noroeste,412610
+41,Paraná,04,Norte Pioneiro Paranaense,017,Ibaiti,26207,4126207,Sapopema,sapopema,6736,18,norte,412620
+41,Paraná,03,Norte Central Paranaense,009,Maringá,26256,4126256,Sarandi,sarandi,82847,15,noroeste,412625
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,26272,4126272,Saudade do Iguaçu,saudade do iguaçu,5028,7,oeste,412627
+41,Paraná,05,Centro Oriental Paranaense,020,Jaguariaíva,26306,4126306,Sengés,sengés,18414,3,leste,412630
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,26355,4126355,Serranópolis do Iguaçu,serranópolis do iguaçu,4568,9,oeste,412635
+41,Paraná,04,Norte Pioneiro Paranaense,015,Cornélio Procópio,26405,4126405,Sertaneja,sertaneja,5817,18,norte,412640
+41,Paraná,03,Norte Central Paranaense,007,Porecatu,26504,4126504,Sertanópolis,sertanópolis,15638,17,norte,412650
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,26603,4126603,Siqueira Campos,siqueira campos,18454,19,norte,412660
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,26652,4126652,Sulina,sulina,3394,7,oeste,412665
+41,Paraná,03,Norte Central Paranaense,011,Londrina,26678,4126678,Tamarana,tamarana,12262,17,norte,412667
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,26702,4126702,Tamboara,tamboara,4664,14,noroeste,412670
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,26801,4126801,Tapejara,tapejara,14598,13,noroeste,412680
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,26900,4126900,Tapira,tapira,5836,12,noroeste,412690
+41,Paraná,09,Sudeste Paranaense,031,Prudentópolis,27007,4127007,Teixeira Soares,teixeira soares,10283,4,leste,412700
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,27106,4127106,Telêmaco Borba,telêmaco borba,69872,21,leste,412710
+41,Paraná,02,Centro Ocidental Paranaense,005,Campo Mourão,27205,4127205,Terra Boa,terra boa,15776,11,noroeste,412720
+41,Paraná,01,Noroeste Paranaense,001,Paranavaí,27304,4127304,Terra Rica,terra rica,15221,14,noroeste,412730
+41,Paraná,06,Oeste Paranaense,022,Toledo,27403,4127403,Terra Roxa,terra roxa,16759,20,oeste,412740
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,27502,4127502,Tibagi,tibagi,19344,21,leste,412750
+41,Paraná,10,Metropolitana de Curitiba,039,Rio Negro,27601,4127601,Tijucas do Sul,tijucas do sul,14537,2,leste,412760
+41,Paraná,06,Oeste Paranaense,022,Toledo,27700,4127700,Toledo,toledo,119313,20,oeste,412770
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,27809,4127809,Tomazina,tomazina,8791,19,norte,412780
+41,Paraná,06,Oeste Paranaense,023,Cascavel,27858,4127858,Três Barras do Paraná,três barras do paraná,11824,10,oeste,412785
+41,Paraná,10,Metropolitana de Curitiba,037,Curitiba,27882,4127882,Tunas do Paraná,tunas do paraná,6256,2,leste,412788
+41,Paraná,01,Noroeste Paranaense,003,Cianorte,27908,4127908,Tuneiras do Oeste,tuneiras do oeste,8695,13,noroeste,412790
+41,Paraná,06,Oeste Paranaense,022,Toledo,27957,4127957,Tupãssi,tupãssi,7997,20,oeste,412795
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,27965,4127965,Turvo,turvo,13811,5,leste,412796
+41,Paraná,02,Centro Ocidental Paranaense,004,Goioerê,28005,4128005,Ubiratã,ubiratã,21558,11,noroeste,412800
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,28104,4128104,Umuarama,umuarama,100676,12,noroeste,412810
+41,Paraná,09,Sudeste Paranaense,033,União da Vitória,28203,4128203,União da Vitória,união da vitória,52735,6,leste,412820
+41,Paraná,03,Norte Central Paranaense,006,Astorga,28302,4128302,Uniflor,uniflor,2466,15,noroeste,412830
+41,Paraná,04,Norte Pioneiro Paranaense,014,Assaí,28401,4128401,Uraí,uraí,11472,18,norte,412840
+41,Paraná,05,Centro Oriental Paranaense,019,Telêmaco Borba,28534,4128534,Ventania,ventania,9957,21,leste,412853
+41,Paraná,06,Oeste Paranaense,024,Foz do Iguaçu,28559,4128559,Vera Cruz do Oeste,vera cruz do oeste,8973,10,oeste,412855
+41,Paraná,07,Sudoeste Paranaense,026,Francisco Beltrão,28609,4128609,Verê,verê,7878,8,oeste,412860
+41,Paraná,08,Centro-Sul Paranaense,029,Guarapuava,28658,4128658,Virmond,virmond,3950,5,leste,412865
+41,Paraná,07,Sudoeste Paranaense,027,Pato Branco,28708,4128708,Vitorino,vitorino,6513,7,oeste,412870
+41,Paraná,04,Norte Pioneiro Paranaense,018,Wenceslau Braz,28500,4128500,Wenceslau Braz,wenceslau braz,19298,19,norte,412850
+41,Paraná,01,Noroeste Paranaense,002,Umuarama,28807,4128807,Xambrê,xambrê,6012,12,noroeste,412880
